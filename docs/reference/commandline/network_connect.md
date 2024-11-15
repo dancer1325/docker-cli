@@ -1,9 +1,10 @@
 # network connect
 
 <!---MARKER_GEN_START-->
-Connect a container to a network
-
-### Options
+* ⭐️Connect a container -- to a -- network ⭐️
+  * 👀-> container -- can communicate with -- OTHER containers | SAME network 👀
+* `docker network connect [OPTIONS] networkName containerNameOrId`
+  * [OPTIONS]
 
 | Name                | Type          | Default | Description                                |
 |:--------------------|:--------------|:--------|:-------------------------------------------|
@@ -17,11 +18,24 @@ Connect a container to a network
 
 <!---MARKER_GEN_END-->
 
-## Description
+## Prerequisites
+* [Install docker](https://docs.docker.com/get-docker/)
+* Create a network
+  * `docker network create defaultone`
+* TODO:
+* `docker run --network=defaultone -itd --name=container1 busybox`
+  * Run a container within the network created
+* Container2
+  * `docker run -itd --name=container2 busybox`
+    * Run a container out of the network
+  * `docker exec -it container2 sh` & `ping container1`
+    * You can NOT ping to container1 -- from -- container2
 
-Connects a container to a network. You can connect a container by name
-or by ID. Once connected, the container can communicate with other containers in
-the same network.
+* container — connected to — network
+  * `docker network connect defaultone container2` or `docker network connect defaultone container2ID` & 
+    * `docker inspect -f '{{ .NetworkSettings.Networks}}' container2` to check that you have added to the container network
+  * → — can communicate with — other containers in the network
+    * `docker exec -it container2 sh` & `ping container1
 
 ## Examples
 
