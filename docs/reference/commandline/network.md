@@ -18,8 +18,3 @@ Manage networks
 
 
 <!---MARKER_GEN_END-->
-
-## Description
-
-Manage networks. You can use subcommands to create, inspect, list, remove,
-prune, connect, and disconnect networks.
